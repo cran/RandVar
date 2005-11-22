@@ -133,20 +133,16 @@ setMethod("Arith", signature(e1 = "EuclRandVariable", e2 = "EuclRandVariable"),
         if(nrvalues1 != nrvalues2){
             if(nrvalues1 > nrvalues2){
                 if(nrvalues1 %% nrvalues2 == 0){
-                    e2 <- EuclRandVariable(Map = rep(e2@Map, nrvalues1/nrvalues2), 
-                                       Domain = e2@Domain, dimension = e2@Range@dimension)
+                    e2@Map <- rep(e2@Map, nrvalues1/nrvalues2)
                 }else{
-                    e2 <- EuclRandVariable(Map = rep(e2@Map, nrvalues1/nrvalues2 + 1), 
-                                       Domain = e2@Domain, dimension = e2@Range@dimension)
+                    e2@Map <- rep(e2@Map, nrvalues1/nrvalues2 + 1)
                     warning("longer object length is not a multiple of shorter object length")
                 }
             }else{
                 if(nrvalues2 %% nrvalues1 == 0){
-                    e1 <- EuclRandVariable(Map = rep(e1@Map, nrvalues2/nrvalues1), 
-                                       Domain = e1@Domain, dimension = e1@Range@dimension)
+                    e1@Map <- rep(e1@Map, nrvalues2/nrvalues1)
                 }else{
-                    e1 <- EuclRandVariable(Map = rep(e1@Map, nrvalues2/nrvalues1 + 1), 
-                                       Domain = e1@Domain, dimension = e1@Range@dimension)
+                    e1@Map <- rep(e1@Map, nrvalues2/nrvalues1 + 1)
                     warning("longer object length is not a multiple of shorter object length")
                 }
             }

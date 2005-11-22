@@ -39,8 +39,13 @@ setMethod("%*%", signature(x = "matrix", y = "EuclRandVariable"),
             }
         }
 
-        return(new("EuclRandMatrix", Map = map, Dim = as.integer(c(nrow(x),1)), 
-                                     Domain = y@Domain, Range = Reals()))
+        R <- new("EuclRandMatrix") 
+        R@Map <- map
+        R@Dim <- as.integer(c(nrow(x), 1))
+        R@Domain <- y@Domain
+        R@Range <- Reals()
+
+        return(R)
     })
 setMethod("%*%", signature(x = "matrix", y = "EuclRandMatrix"),
     function(x, y){
@@ -112,8 +117,13 @@ setMethod("%*%", signature(x = "matrix", y = "EuclRandVarList"),
             }
         }
 
-        return(new("EuclRandMatrix", Map = map, Dim=as.integer(c(nrow(x),1)), 
-                                        Domain = y[[1]]@Domain, Range = Reals()))
+        R <- new("EuclRandMatrix") 
+        R@Map <- map
+        R@Dim <- as.integer(c(nrow(x), 1))
+        R@Domain <- y[[1]]@Domain
+        R@Range <- Reals()
+
+        return(R)
     })
 setMethod("%*%", signature(x = "numeric", y = "EuclRandMatrix"),
     function(x, y){ t(x) %*% y })
@@ -161,8 +171,13 @@ setMethod("%*%", signature(x = "EuclRandVariable", y = "EuclRandVariable"),
             else
                 Dom <- y@Domain
 
-        return(new("EuclRandMatrix", Map = list(fct), Dim = as.integer(c(1,1)), 
-                                        Domain = Dom, Range = Reals()))
+        R <- new("EuclRandMatrix") 
+        R@Map <- list(fct)
+        R@Dim <- as.integer(c(1, 1))
+        R@Domain <- Dom
+        R@Range <- Reals()
+
+        return(R)
     })
 setMethod("%*%", signature(x = "EuclRandMatrix", y = "EuclRandMatrix"),
     function(x, y){
@@ -193,10 +208,13 @@ setMethod("%*%", signature(x = "EuclRandVariable", y = "EuclRandMatrix"),
         if(!compatibleDomains(x, y))
             stop("the domains of the two random variables are not compatible")
 
-        xMat <- new("EuclRandMatrix", Map = x@Map, Dim = as.integer(c(length(x),1)),
-                    Domain = x@Domain, Range = x@Range)
+        R <- new("EuclRandMatrix") 
+        R@Map <- x@Map
+        R@Dim <- as.integer(c(length(x), 1))
+        R@Domain <- x@Domain
+        R@Range <- x@Range
 
-        return(xMat %*% y) 
+        return(R %*% y) 
     })
 setMethod("%*%", signature(x = "EuclRandMatrix", y = "EuclRandVariable"),
     function(x, y){
@@ -206,8 +224,11 @@ setMethod("%*%", signature(x = "EuclRandMatrix", y = "EuclRandVariable"),
         if(!compatibleDomains(x, y))
             stop("the domains of the two random variables are not compatible")
 
-        yMat <- new("EuclRandMatrix", Map = y@Map, Dim = as.integer(c(nrvalues,1)),
-                    Domain = y@Domain, Range = y@Range)
+        R <- new("EuclRandMatrix") 
+        R@Map <- y@Map
+        R@Dim <- as.integer(c(nrvalues, 1))
+        R@Domain <- y@Domain
+        R@Range <- y@Range
 
-        return(x %*% yMat) 
+        return(x %*% R) 
     })

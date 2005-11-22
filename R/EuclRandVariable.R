@@ -1,12 +1,29 @@
 ## generating function
 EuclRandVariable <- function(Map = list(function(x){1}), 
                              Domain = NULL, dimension = 1, Range){
-    if(missing(Range))
-        return(new("EuclRandVariable", Map = Map, Domain = Domain, 
-                   Range = EuclideanSpace(dimension = dimension)))
-    else
-        return(new("EuclRandVariable", Map = Map, Domain = Domain, 
-                   Range = Range))
+    nrvalues <- length(Map)
+    for(i in 1:nrvalues){
+        if(!is.function(Map[[i]])) 
+            stop("element ", i, " of 'Map' contains no function")
+        if(length(formals(Map[[i]])) != 1)
+            stop("element ", i, " of 'Map' has to be a function of one argument")
+        if(names(formals(Map[[i]])) != "x")
+            stop("element ", i, " of 'Map' contains a function with argument name != 'x'")
+    }
+
+    R <- new("EuclRandVariable")
+    R@Map <- Map
+    R@Domain <- Domain
+
+    if(missing(Range)) 
+        R@Range <- EuclideanSpace(dimension = dimension)
+    else{
+        if(!is(Range, "EuclideanSpace"))
+            stop("'Range' is no Euclidean space")
+        R@Range <- Range
+    }
+    
+    return(R)
 }
 
 ## replace method
@@ -21,18 +38,38 @@ setReplaceMethod("Range", "EuclRandVariable",
 ## generating function
 EuclRandMatrix <- function(Map = list(function(x){1}), nrow = 1, ncol = 1,
                               Domain = NULL, dimension = 1, Range) {
-    if (missing(nrow)) 
+    nrvalues <- length(Map)
+    for(i in 1:nrvalues){
+        if(!is.function(Map[[i]])) 
+            stop("element ", i, " of 'Map' contains no function")
+        if(length(formals(Map[[i]])) != 1)
+            stop("element ", i, " of 'Map' has to be a function of one argument")
+        if(names(formals(Map[[i]])) != "x")
+            stop("element ", i, " of 'Map' contains a function with argument name != 'x'")
+    }
+    if(missing(nrow)) 
         nrow <- ceiling(length(Map)/ncol)
     else if (missing(ncol)) 
         ncol <- ceiling(length(Map)/nrow)
     
-    if(missing(Range))
-        return(new("EuclRandMatrix", Map = Map, Domain = Domain, 
-                   Range = EuclideanSpace(dimension = dimension),
-                   Dim = as.integer(c(nrow, ncol))))
-    else
-        return(new("EuclRandMatrix", Map = Map, Domain = Domain, 
-                   Range = Range, Dim = as.integer(c(nrow, ncol))))
+    if(length(Map) != nrow*ncol)
+        stop("'Map' has wrong dimension")
+
+    R <- new("EuclRandMatrix")
+    R@Map <- Map
+    R@Domain <- Domain
+
+    if(missing(Range)) 
+        R@Range <- EuclideanSpace(dimension = dimension)
+    else{
+        if(!is(Range, "EuclideanSpace"))
+            stop("'Range' is no Euclidean space")
+        R@Range <- Range
+    }
+    
+    R@Dim <- as.integer(c(nrow, ncol))
+    
+    return(R)
 }
 
 ## access methods
@@ -42,9 +79,14 @@ setMethod("ncol", "EuclRandMatrix", function(x) x@Dim[2])
 
 ## setAs
 setAs(from = "EuclRandVariable", to = "EuclRandMatrix", 
-    def = function(from){ 
-        new("EuclRandMatrix", Map = from@Map, Dim = as.integer(c(length(from), 1)), 
-                                 Domain = from@Domain, Range = from@Range)
+    def = function(from){
+        R <- new("EuclRandMatrix") 
+        R@Map <- from@Map
+        R@Dim <- as.integer(c(length(from), 1))
+        R@Domain <- from@Domain
+        R@Range <- from@Range
+        
+        return(R)
     })
 
 ## replace methods
@@ -134,8 +176,10 @@ setMethod("evalRandVar", signature(RandVar = "EuclRandVariable",
         nrvalues <- length(RandVar)
         res <- array(0, c(nrvalues, nrow(x), RandVar@Range@dimension))
         
-        for(i in 1:nrvalues) 
-            res[i,,] <- t(apply(x, 1, RandVar@Map[[i]]))
+        for(i in 1:nrvalues){
+            fun <- RandVar@Map[[i]]
+            res[i,,] <- t(apply(x, 1, fun))
+        }
         
         return(res)
     })
@@ -172,12 +216,14 @@ setMethod("evalRandVar", signature(RandVar = "EuclRandVariable",
         nrvalues <- length(RandVar)
         res <- array(NA, c(nrvalues, nrow(x), RandVar@Range@dimension))
         
-        for(i in 1:nrvalues) 
+        for(i in 1:nrvalues){
+            fun <- RandVar@Map[[i]]
             for(j in 1:nrow(x))
                 if(!liesInSupport(distr, x[j,]))
                     next
                 else
-                    res[i,j,] <- RandVar@Map[[i]](x[j,])
+                    res[i,j,] <- fun(x[j,])
+        }
         
         return(res)
     })
@@ -215,8 +261,10 @@ setMethod("evalRandVar", signature(RandVar = "EuclRandMatrix",
         res <- array(0, c(d[1], d[2], nrow(x), RandVar@Range@dimension))
         
         for(i in 1:d[1]) 
-            for(j in 1:d[2])
-                res[i,j,,] <- t(apply(x, 1, RandVar@Map[[(i-1)*d[2] + j]]))
+            for(j in 1:d[2]){
+                fun <- RandVar@Map[[(i-1)*d[2] + j]]
+                res[i,j,,] <- t(apply(x, 1, fun))
+            }
         
         return(res)
     })
@@ -257,12 +305,14 @@ setMethod("evalRandVar", signature(RandVar = "EuclRandMatrix",
         res <- array(NA, c(d[1], d[2], nrow(x), RandVar@Range@dimension))
         
         for(i in 1:d[1]) 
-            for(j in 1:d[2])
+            for(j in 1:d[2]){
+                fun <- RandVar@Map[[(i-1)*d[2] + j]]
                 for(k in 1:nrow(x))
                     if(!liesInSupport(distr, x[k,]))
                         next
                     else
-                        res[i,j,k,] <- RandVar@Map[[(i-1)*d[2] + j]](x[k,])
+                        res[i,j,k,] <- fun(x[k,])
+            }
         
         return(res)
     })
@@ -293,8 +343,13 @@ setMethod("t", signature(x = "EuclRandVariable"),
                                     list(fct = x@Map[[i]]))
         }
 
-        return(new("EuclRandMatrix", Map = map, Dim = as.integer(c(1, length(x))), 
-                                     Domain = x@Domain, Range = x@Range))
+        R <- new("EuclRandMatrix") 
+        R@Map <- map
+        R@Dim <- as.integer(c(1, length(x)))
+        R@Domain <- x@Domain
+        R@Range <- x@Range
+        
+        return(R)
     })
 setMethod("t", signature(x = "EuclRandMatrix"), 
     function(x){ 
