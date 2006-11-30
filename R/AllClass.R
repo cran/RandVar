@@ -2,6 +2,11 @@
     require("methods", character = TRUE, quietly = TRUE) 
 }
 
+.onAttach <- function(library, pkg){
+    buildStartupMessage(pkg = "RandVar", packageHelp = TRUE, library = library, VIGNETTE=gettext("This package also includes a vignette; try vignette(\"RandVar\")."))
+    invisible()
+}
+
 # optional rSpace
 setClassUnion("OptionalrSpace", c("rSpace", "NULL"))
 
