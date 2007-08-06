@@ -26,7 +26,7 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 % -------------------------------------------------------------------------------
 %
 % -------------------------------------------------------------------------------
-\usepackage{/home/kohl/RTOP/r-release-branch/R/share/texmf/Sweave}
+\usepackage{/u/kohl/RTOP/r-devel/R/share/texmf/Sweave}
 \begin{document}
 % -------------------------------------------------------------------------------
 \title{RandVar: Implementation of random variables by means
@@ -202,7 +202,7 @@ function (x)
     }
     exp(f1(x))
 }
-<environment: 0x9a91890>
+<environment: 0x40c9c70>
 
 [[2]]
 function (x) 
@@ -217,7 +217,7 @@ function (x)
     }
     exp(f1(x))
 }
-<environment: 0x9a91890>
+<environment: 0x40c9c70>
 \end{Soutput}
 \begin{Sinput}
 > R2 <- exp(X - 1:2)
@@ -233,11 +233,11 @@ function (x)
         {
             x
         }
-        f1(x) - 1
+        f1(x) - 1L
     }
     exp(f1(x))
 }
-<environment: 0x9bac138>
+<environment: 0x35bacd8>
 
 [[2]]
 function (x) 
@@ -248,11 +248,11 @@ function (x)
         {
             x^2
         }
-        f1(x) - 2
+        f1(x) - 2L
     }
     exp(f1(x))
 }
-<environment: 0x9bac138>
+<environment: 0x35bacd8>
 \end{Soutput}
 \begin{Sinput}
 > (Y <- RealRandVariable(Map = list(function(x) {
@@ -360,7 +360,7 @@ we can compute the (conditional) expectation of {\tt X} under {\tt D}, respectiv
 > E(object = D, fun = X)
 \end{Sinput}
 \begin{Soutput}
-[1] 0 1
+[1] 2.784590e-16 9.999942e-01
 \end{Soutput}
 \begin{Sinput}
 > E(D)
@@ -378,7 +378,8 @@ we can compute the (conditional) expectation of {\tt X} under {\tt D}, respectiv
 > (CD <- LMCondDistribution(theta = 1))
 \end{Sinput}
 \begin{Soutput}
-Distribution object of class: AbscontCondDistributiontheta :  1 
+Distribution object of class: AbscontCondDistribution
+theta :  1 
 intercept :  0 
 scale :  1 
 ## cond:
@@ -389,7 +390,7 @@ Range:	Euclidean Space with dimension 1
 > E(object = CD, fun = X, cond = 2)
 \end{Sinput}
 \begin{Soutput}
-[1] 2 5
+[1] 2.000000 4.999993
 \end{Soutput}
 \begin{Sinput}
 > E(Norm(mean = 2))
@@ -403,7 +404,7 @@ Range:	Euclidean Space with dimension 1
 + })
 \end{Sinput}
 \begin{Soutput}
-[1] 5
+[1] 4.999993
 \end{Soutput}
 \end{Schunk}
 for some given condition {\tt cond}.

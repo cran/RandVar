@@ -19,7 +19,7 @@ RandVariable <- function(Map = list(function(x){ }), Domain = NULL, Range = NULL
 }
 
 ## access methods
-setMethod("Map", "RandVariable", function(object) object@Map)
+setMethod("Map", "RandVariable", function(f, ...) f@Map)
 setMethod("Domain", "RandVariable", function(object) object@Domain)
 setMethod("Range", "RandVariable", function(object) object@Range)
 

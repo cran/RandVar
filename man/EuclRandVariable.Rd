@@ -73,6 +73,5 @@ function(Map = list(function(x){1}), Domain = NULL, dimension = 1, Range) {
                    Range = Range))
 }
 }
-}
 \concept{random variable}
 \keyword{}

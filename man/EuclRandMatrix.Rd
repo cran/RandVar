@@ -66,7 +66,6 @@ function(Map = list(function(x){1}), nrow = 1, ncol = 1,
                    Range = Range, Dim = as.integer(c(nrow, ncol))))
 }
 }
-}
 \concept{random variable}
 \concept{random matrix}
 \keyword{}
