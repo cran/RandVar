@@ -1,6 +1,6 @@
-#if(!isGeneric("Map")){
-#    setGeneric("Map", function(object) standardGeneric("Map"))
-#}
+if(!isGeneric("Map")){
+    setGeneric("Map", function(f, ...) standardGeneric("Map"))
+}
 if(!isGeneric("Domain")){
     setGeneric("Domain", function(object) standardGeneric("Domain"))
 }
