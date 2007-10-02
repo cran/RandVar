@@ -1,6 +1,6 @@
 Package: RandVar
-Version: 0.6.1
-Date: 2007-08-08
+Version: 0.6.2
+Date: 2007-10-02
 Title: Implementation of random variables
 Description: Implementation of random variables by means
     of S4 classes and methods
@@ -11,4 +11,4 @@ SaveImage: no
 LazyLoad: yes
 License: GPL version 2 or later
 URL: http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/RandVar.html
-Packaged: Wed Aug  8 07:53:50 2007; kohl
+Packaged: Tue Oct  2 15:25:20 2007; Matthias Kohl

@@ -26,7 +26,7 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 % -------------------------------------------------------------------------------
 %
 % -------------------------------------------------------------------------------
-\usepackage{/u/kohl/RTOP/r-devel/R/share/texmf/Sweave}
+\usepackage{c:/Programme/R/R-2.6.0rc/share/texmf/Sweave}
 \begin{document}
 % -------------------------------------------------------------------------------
 \title{RandVar: Implementation of random variables by means
@@ -202,7 +202,7 @@ function (x)
     }
     exp(f1(x))
 }
-<environment: 0x284f5a0>
+<environment: 0x024d9e60>
 
 [[2]]
 function (x) 
@@ -217,7 +217,7 @@ function (x)
     }
     exp(f1(x))
 }
-<environment: 0x284f5a0>
+<environment: 0x024d9e60>
 \end{Soutput}
 \begin{Sinput}
 > R2 <- exp(X - 1:2)
@@ -237,7 +237,7 @@ function (x)
     }
     exp(f1(x))
 }
-<environment: 0x22f3f58>
+<environment: 0x022ca494>
 
 [[2]]
 function (x) 
@@ -252,7 +252,7 @@ function (x)
     }
     exp(f1(x))
 }
-<environment: 0x22f3f58>
+<environment: 0x022ca494>
 \end{Soutput}
 \begin{Sinput}
 > (Y <- RealRandVariable(Map = list(function(x) {
@@ -291,15 +291,6 @@ function (x)
 [1] 1
 \end{Soutput}
 \begin{Sinput}
-> evalRandVar(R3, 2)
-\end{Sinput}
-\begin{Soutput}
-, , 1
-
-          [,1]
-[1,] 0.1540075
-\end{Soutput}
-\begin{Sinput}
 > 2 * sin(2) + 2^2 * cos(2)
 \end{Sinput}
 \begin{Soutput}
@@ -319,16 +310,6 @@ Range:	Euclidean Space with dimension 1
 \end{Sinput}
 \begin{Soutput}
 [1] 4
-\end{Soutput}
-\begin{Sinput}
-> evalRandVar(R4, 2)
-\end{Sinput}
-\begin{Soutput}
-, , 1
-
-         [,1]       [,2]
-[1,] 1.818595 -0.8322937
-[2,] 3.637190 -1.6645873
 \end{Soutput}
 \begin{Sinput}
 > (M <- matrix(c(2 * sin(2), 2^2 * sin(2), 2 * cos(2), 2^2 * cos(2)), 
@@ -360,7 +341,7 @@ we can compute the (conditional) expectation of {\tt X} under {\tt D}, respectiv
 > E(object = D, fun = X)
 \end{Sinput}
 \begin{Soutput}
-[1] 2.784590e-16 9.999942e-01
+[1] 2.792788e-16 9.999942e-01
 \end{Soutput}
 \begin{Sinput}
 > E(D)

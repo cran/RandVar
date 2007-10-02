@@ -71,7 +71,7 @@ dimension(R4)
 
 
 ## EuclRandMatrix
-(R5 <- t(R4))
+(R5 <- as(R4, "EuclRandMatrix"))
 dimension(R5)
 Domain(R5) <- Reals()
 Range(R5) <- Reals()
@@ -80,13 +80,13 @@ plot(DL2) # vgl. DL1
 
 Domain(R5) <- EuclideanSpace(dimension = 2)
 Range(R5) <- EuclideanSpace(dimension = 2)
-res1.R5 <- evalRandVar(R5, rnorm(2))
-res1.R5[1,1,] # result for map of R5[1,1]
+#res1.R5 <- evalRandVar(R5, rnorm(2))
+#res1.R5[1,1,] # result for map of R5[1,1]
 
 res2.R5 <- evalRandVar(R5, X)
-res2.R5[1,2,,] # results for Map of R5[1,2]
-res2.R5[1,2,1:2,] # results for Map of R5[1,2]
-res2.R5[1,2,1:2,2] # results for Map of R5[1,2]
+res2.R5[,,1,2] 
+res2.R5[,1,2,1:2] 
+res2.R5[1,1,1:2,2]
 
 new("EuclRandMatrix", Map = L2, Dim = as.integer(c(3,2)), Domain = Reals(), Range = Reals())
 (R6 <- EuclRandMatrix(Map = L2, ncol = 2, Domain = Reals(), Range = Reals()))

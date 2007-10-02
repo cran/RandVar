@@ -80,8 +80,8 @@ plot(DL2) # vgl. DL1
 
 Domain(R5) <- EuclideanSpace(dimension = 2)
 Range(R5) <- EuclideanSpace(dimension = 2)
-res1.R5 <- evalRandVar(R5, rnorm(2))
-res1.R5[1,1,] # result for map of R5[1,1]
+#res1.R5 <- evalRandVar(R5, rnorm(2))
+#res1.R5[1,1,] # result for map of R5[1,1]
 
 res2.R5 <- evalRandVar(R5, X)
 res2.R5[,,1,2] 

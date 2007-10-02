@@ -148,11 +148,11 @@ Map(R2)
 Map(Y)
 R3 <- X %*% Y
 dimension(R3)
-evalRandVar(R3, 2)
+#evalRandVar(R3, 2)
 2*sin(2) + 2^2*cos(2)
 (R4 <- X %*% t(Y))
 dimension(R4)
-evalRandVar(R4, 2)
+#evalRandVar(R4, 2)
 (M <- matrix(c(2*sin(2), 2^2*sin(2), 2*cos(2), 2^2*cos(2)), ncol = 2))
 (R5 <- M %*% R4)
 @
