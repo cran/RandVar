@@ -230,7 +230,7 @@ setMethod("evalRandVar", signature(RandVar = "EuclRandVariable",
 setMethod("evalRandVar", signature(RandVar = "EuclRandMatrix", 
                                    x = "numeric",
                                    distr = "missing"), 
-    function(x, RandVar){
+    function(RandVar, x){
         if(!is.null(RandVar@Domain)){
             if(length(x) != RandVar@Domain@dimension)
                 stop("x has wrong dimension")
@@ -271,7 +271,7 @@ setMethod("evalRandVar", signature(RandVar = "EuclRandMatrix",
 setMethod("evalRandVar", signature(RandVar = "EuclRandMatrix", 
                                    x = "numeric",
                                    distr = "Distribution"), 
-    function(x, RandVar, distr){
+    function(RandVar, x, distr){
         if(is.null(RandVar@Domain))
             stop("domain of 'RandVar' is 'NULL'")
         if(ncol(x) != RandVar@Domain@dimension)
@@ -327,8 +327,7 @@ setMethod("imageDistr", signature(RandVar = "EuclRandVariable",
         nrvalues <- length(RandVar)
         res <- vector(mode = "list", length = nrvalues)
         for(i in 1:nrvalues)
-            res[[i]] <- RandVar@Map[[i]](distr)
-
+            res[[i]] <- .getImageDistr(f = RandVar@Map[[i]], distr)
         return(new("DistrList", res))
     })
 
