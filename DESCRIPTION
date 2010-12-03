@@ -1,6 +1,6 @@
 Package: RandVar
-Version: 0.7
-Date: 2009-10-16
+Version: 0.8
+Date: 2010-12-03
 Title: Implementation of random variables
 Description: Implementation of random variables by means of S4 classes
         and methods
@@ -12,9 +12,12 @@ LazyLoad: yes
 License: LGPL-3
 Encoding: latin1
 URL: http://robast.r-forge.r-project.org/
-LastChangedDate: {$LastChangedDate: 2009-10-16 06:44:40 +0200 (Fr, 16.
-        Okt 2009) $}
-LastChangedRevision: {$LastChangedRevision: 384 $}
-Packaged: 2009-11-03 13:13:10 UTC; btms02
+LastChangedDate: {$LastChangedDate: 2010-12-03 12:13:24 +0100 (Fri, 03
+        Dec 2010) $}
+LastChangedRevision: {$LastChangedRevision: 440 $}
+SVNRevision: 439
 Repository: CRAN
-Date/Publication: 2009-11-03 15:30:31
+Repository/R-Forge/Project: robast
+Repository/R-Forge/Revision: 441
+Date/Publication: 2011-01-20 14:54:26
+Packaged: 2011-01-05 21:47:02 UTC; rforge
