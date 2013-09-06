@@ -1,4 +1,4 @@
-9effea7352affc09394ed9d76428b9ad *DESCRIPTION
+a8246e8ddff227cae10d964a6ddd70f9 *DESCRIPTION
 daaf808b6963de152e7979d2173ea1bc *NAMESPACE
 f3f26aaefd3c72361a7d995c2112cc75 *R/AllClass.R
 db51244fe2a790c15e6552d137720806 *R/AllGeneric.R
@@ -12,12 +12,13 @@ b31099dcaa9985dd05810cef66b76d88 *R/Expectation.R
 2cb217df406f403736df1bcf5d13395e *R/RandVariable.R
 aa8d432ecef950b254b3d1deac80efb5 *R/RealRandVariable.R
 48935bae7a3b08bc81043f6a36fec9d5 *R/util.R
-1418c0e8803badaee1eab54b903e42e7 *RandVar-Ex.R
+c519842fd20e3183dbac9f2c057561ef *build/vignette.rds
 0438c5abb55035dac44f5afeaae26b89 *inst/CITATION
-d840e7f2d9a4da520393821f514ab378 *inst/NEWS
+61e6d74fe5eb652fcd2c6e650d379ad1 *inst/NEWS
 6d3d08dff1331c64b33b7ce16b687869 *inst/TOBEDONE
-8c0d295b9d63fa477ffadb50cdef5a6a *inst/doc/RandVar.Rnw
-68fb1765e31c1aee9a5962521205458e *inst/doc/RandVar.pdf
+c9a5902e1a018ceed88b7d8cdb4b9901 *inst/doc/RandVar.R
+7c7c50255cfbdb15ad0f24997591c7f5 *inst/doc/RandVar.Rnw
+5a564d3b56439c57652b8f40885be2c4 *inst/doc/RandVar.pdf
 d356ac32d477a26996d04c22dd0421a3 *inst/tests/tests.R
 ad693f7721d17f50c93e6ecc695e561f *man/0RandVar-package.Rd
 ac5ea5e9e4a9fa964d82804410915b0f *man/EuclRandMatrix-class.Rd
@@ -32,10 +33,9 @@ d8e2e962fea0394f58bb10c3816b6aeb *man/RandVariable.Rd
 f032309da8a18773871ae16c04fb378d *man/RealRandVariable-class.Rd
 7e0260e9edf65c8df5e07f8b69470e3e *man/RealRandVariable.Rd
 5ee04e2a0ffa53c2bb3050e6cd414e13 *man/util.Rd
-8a2b8ee53039be4d26bfab5fa8de3974 *tests/Examples/RandVar-Ex.Rout.save
-5e3ce82d282cd67e2df8503a831afe12 *tests/tests.R
-8c140b54bbd619ea19c25f19203494ac *tests/tests.Rout.save
-8c0d295b9d63fa477ffadb50cdef5a6a *vignettes/RandVar.Rnw
+c3f2db3cfe64c4e6d29b916a1c613f97 *tests/tests.R
+f841924232d1ecdec2147a1b091a9e2d *tests/tests.Rout.save
+7c7c50255cfbdb15ad0f24997591c7f5 *vignettes/RandVar.Rnw
 9d90a8ca7349265cc51893774d5f8822 *vignettes/RandVariable.eps
 74ed91127830590270186fc141389eac *vignettes/RandVariable.pdf
 bb6f571101e6b688ffb4621215918f2d *vignettes/svn-multi.sty
