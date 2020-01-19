@@ -10,7 +10,7 @@
 \usepackage{svn-multi}
 % Version control information:
 \svnidlong
-{$HeadURL: svn+ssh://stamats@svn.r-forge.r-project.org/svnroot/robast/branches/robast-1.2/pkg/RandVar/vignettes/RandVar.Rnw $}
+{$HeadURL: svn+ssh://stamats@svn.r-forge.r-project.org/svnroot/robast/pkg/RandVar/vignettes/RandVar.Rnw $}
 {$LastChangedDate: 2017-04-22 12:27:44 +0200 (Sa, 22. Apr 2017) $}
 {$LastChangedRevision: 931 $}
 {$LastChangedBy: ruckdeschel $}
