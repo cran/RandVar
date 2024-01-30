@@ -1,5 +1,4 @@
 ### R code from vignette source 'RandVar.Rnw'
-### Encoding: UTF-8
 
 ###################################################
 ### code chunk number 1: exa1
