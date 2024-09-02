@@ -1,6 +1,6 @@
 Package: RandVar
-Version: 1.2.3
-Date: 2024-01-30
+Version: 1.2.4
+Date: 2024-09-02
 Title: Implementation of Random Variables
 Description: Implements random variables by means of S4 classes and methods.
 Depends: R(>= 3.4), methods, distr(>= 2.8.0), distrEx(>= 2.8.0)
@@ -13,14 +13,14 @@ LazyLoad: yes
 License: LGPL-3
 Encoding: UTF-8
 URL: https://r-forge.r-project.org/projects/robast/
-LastChangedDate: {$LastChangedDate: 2024-01-30 16:55:57 +0100 (Di, 30.
-        Jan 2024) $}
-LastChangedRevision: {$LastChangedRevision: 1263 $}
+LastChangedDate: {$LastChangedDate: 2024-09-02 13:41:45 +0200 (Mo, 02.
+        Sep 2024) $}
+LastChangedRevision: {$LastChangedRevision: 1317 $}
 VCS/SVNRevision: 1261
 NeedsCompilation: no
-Packaged: 2024-01-30 16:04:00 UTC; kohlm
+Packaged: 2024-09-02 11:50:36 UTC; kohlm
 Author: Matthias Kohl [cre, cph, aut],
   Peter Ruckdeschel [aut, cph]
 Maintainer: Matthias Kohl <Matthias.Kohl@stamats.de>
 Repository: CRAN
-Date/Publication: 2024-01-30 22:50:02 UTC
+Date/Publication: 2024-09-02 12:50:02 UTC
